@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
 
-  const [data, setData] = useState(null);
+  const [data, setData] = useState("");
 
   useEffect(() => {
     fetch('https://backend.argouniverse.com/')
@@ -16,7 +16,7 @@ export default function Home() {
       .then(data => {
         console.log(data)
         // Handle the retrieved data
-        setData(JSON.stringify(data));
+        setData(data.quote);
       })
       .catch(error => {
         // Handle any errors
