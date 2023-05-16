@@ -16,7 +16,7 @@ export default function Home() {
       .then(data => {
         console.log(data)
         // Handle the retrieved data
-        setData(data.quote);
+        setData(data);
       })
       .catch(error => {
         // Handle any errors
@@ -36,7 +36,7 @@ export default function Home() {
       <main className={`${styles.main} ${inter.className}`}>
         <div className={styles.description}>
           <p>
-            {data}
+            {data.quote}
             <code className={styles.code}>https://github.com/argo-universe/backend-app</code>
           </p>
           <div>
