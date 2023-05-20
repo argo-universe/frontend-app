@@ -1,7 +1,5 @@
 name: Frontend App
-
-on: workflow_call
-
+ 
 env:
   APP_NAME: frontend-app
   IMAGE_TAG: "dev-${{github.run_number}}"
