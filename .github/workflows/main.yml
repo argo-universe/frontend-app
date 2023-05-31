@@ -43,3 +43,11 @@ jobs:
         run: | 
           chmod +x app-configs/scripts/update_imagetag.sh
           app-configs/scripts/update_imagetag.sh
+      
+      - name: Health Check
+        env: 
+          APP_NAME: ${{ env.APP_NAME }}
+        run: | 
+          curl -o /usr/local/bin/argocd https://argocd.argouniverse.com/download/argocd-linux-amd64
+          chmod +x /usr/local/bin/argocd
+          argocd app wait argocd/$APP_NAME --grpc-web --timeout 600 --server argocd.argouniverse.com
