@@ -1,5 +1,7 @@
 name: Frontend App
- 
+
+concurrency: single
+
 env:
   APP_NAME: frontend-app
   IMAGE_TAG: "dev-${{github.run_number}}"
@@ -50,4 +52,5 @@ jobs:
         run: | 
           curl -o /usr/local/bin/argocd https://argocd.argouniverse.com/download/argocd-linux-amd64
           chmod +x /usr/local/bin/argocd
+          argocd app get argocd/$APP_NAME --grpc-web --refresh --server argocd.argouniverse.com
           argocd app wait argocd/$APP_NAME --grpc-web --timeout 600 --server argocd.argouniverse.com
